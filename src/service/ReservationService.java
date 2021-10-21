@@ -6,11 +6,22 @@ import model.Reservation;
 import model.Room;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
 
 public class ReservationService {
-    private Collections 
+    private
+
+    public static ReservationService reservationService = null;
+
+    private ReservationService(){}
+
+    public static ReservationService getInstance(){
+        if(reservationService == null){
+            reservationService = new ReservationService();
+        }
+        return reservationService;
+    }
+
     public void addRoom(Room room){
 
     }
