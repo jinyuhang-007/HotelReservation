@@ -12,6 +12,14 @@ public class Room implements IRoom{
         this.enumeration = enumeration;
         this.free = free;
     }
+
+    public Room(Room room){
+        this.roomNumber = room.roomNumber;
+        this.price = room.price;
+        this.enumeration = room.enumeration;
+        this.free = room.free;
+    }
+
     @Override
     public Double getRoomPrice() {
         return price;

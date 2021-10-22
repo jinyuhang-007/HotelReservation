@@ -8,7 +8,7 @@ public class CustomerService {
     /*
     * String: email address
     * */
-    private static Map<String, Customer> customers;
+    private static Collection<Customer> customers = new HashSet<>();
 
     public static CustomerService customerService = null;
 
@@ -17,31 +17,27 @@ public class CustomerService {
     public static CustomerService getInstance(){
         if(customerService==null){
             customerService = new CustomerService();
-            customers = new HashMap<String, Customer>();
         }
         return customerService;
     }
 
     public void addCustomer(String email, String firstName, String lastName){
         Customer customer = new Customer(email,firstName,lastName);
-        customers.put(customer.getEmail(), customer);
+        customers.add(customer);
     }
 
     public Customer getCustomer(String customerEmail){
-        if(customers.containsKey(customerEmail)){
-            return customers.get(customerEmail);
-        }else{
-            System.out.println("CustomerService: This customer doesn't exist!");
-            return null;
+        for(Customer customer: customers){
+            if(customer.getEmail()==customerEmail){
+                return customer;
+            }
         }
+        System.out.println("CustomerService: We don't have customer with email:"+customerEmail+"!");
+        return null;
     }
 
     public Collection<Customer> getAllCustomers(){
-        Collection<Customer> resultSet = new HashSet<Customer>();
-        for(Map.Entry<String, Customer> entry:customers.entrySet()){
-            resultSet.add(entry.getValue());
-        }
-        return resultSet;
+        return customers;
     }
 
 }
