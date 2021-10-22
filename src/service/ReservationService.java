@@ -7,9 +7,10 @@ import model.Room;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 
 public class ReservationService {
-    private
+    private static Collection<Reservation> reservations;
 
     public static ReservationService reservationService = null;
 
@@ -18,6 +19,7 @@ public class ReservationService {
     public static ReservationService getInstance(){
         if(reservationService == null){
             reservationService = new ReservationService();
+            reservations = new HashSet<Reservation>()
         }
         return reservationService;
     }
