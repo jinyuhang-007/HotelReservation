@@ -15,12 +15,14 @@ public class AdminResource {
     public static CustomerService customerService = CustomerService.getInstance();
 
     private AdminResource(){}
+
     public static AdminResource getInstance(){
         if(adminResource == null){
             adminResource = new AdminResource();
         }
         return adminResource;
     }
+
     public Customer getCustomer(String email){
         return customerService.getCustomer(email);
     }
