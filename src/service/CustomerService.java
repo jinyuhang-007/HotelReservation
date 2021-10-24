@@ -32,7 +32,7 @@ public class CustomerService {
                 return customer;
             }
         }
-        System.out.println("CustomerService: We don't have customer with email:"+customerEmail+"!");
+        System.out.println("CustomerService: We don't have a customer with this email:"+customerEmail+"!");
         return null;
     }
 

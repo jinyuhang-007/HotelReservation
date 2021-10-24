@@ -8,13 +8,14 @@ import model.Room;
 import java.util.*;
 
 public class ReservationService {
+    /*
+    * 资源：reservation、rooms
+    * */
     private Collection<Reservation> reservations = new HashSet<>();
     private Collection<IRoom> rooms = new HashSet<>();
 
     public static ReservationService reservationService = null;
-
     private ReservationService(){}
-
     public static ReservationService getInstance(){
         if(reservationService == null){
             reservationService = new ReservationService();
@@ -23,7 +24,7 @@ public class ReservationService {
     }
 
     public void addRoom(Room room){
-        Room newRoom = new Room(room);
+        IRoom newRoom = new Room(room);
         rooms.add(newRoom);
     }
     /*
@@ -39,7 +40,9 @@ public class ReservationService {
         System.out.println("Reservation: We don't have room"+roomNumber+"!");
         return null;
     }
-
+    public Collection<IRoom> getAllRooms(){
+        return rooms;
+    }
     public Reservation reserveARoom(Customer customer, IRoom room, Date checkInDate, Date checkOutDate){
         Collection<IRoom> roomSet = findRooms(checkInDate,checkOutDate);
         if(roomSet.contains(room)){
