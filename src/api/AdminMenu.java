@@ -8,6 +8,7 @@ public class AdminMenu {
     public static AdminResource adminResource = AdminResource.getInstance();
     public AdminMenu(){}
     public void printAdminMenu(){
+        System.out.println("------AdminMenu-----");
         System.out.println("1. See all Customers");
         System.out.println("2. See all Rooms");
         System.out.println("3. See all Reservations");
