@@ -1,8 +1,10 @@
 package api;
 
 import model.IRoom;
+import model.Room;
+import model.RoomType;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class AdminMenu {
     public static AdminResource adminResource = AdminResource.getInstance();
@@ -29,7 +31,30 @@ public class AdminMenu {
                 }else if(command=="3"){
                     adminResource.displayAllReservations();
                 }else if(command=="4"){
-
+                    Boolean addRoom = true;
+                    List<IRoom> rooms = new ArrayList<IRoom>();
+                    while(addRoom){
+                        System.out.println("Do you want to continue? (y/n)");
+                        String answer = scanner.next();
+                        if(answer=="n"){
+                            addRoom = false;
+                            continue;
+                        }
+                        System.out.println("Please enter roomNumber, price, roomType(1. SINGLE 2.DOUBLE) and isFree");
+                        String roomNumber = scanner.next();
+                        Double price = scanner.nextDouble();
+                        String roomType = scanner.next();
+                        Boolean isFree = scanner.nextBoolean();
+                        if(roomType=="1"){
+                            IRoom room = new Room(roomNumber, price, RoomType.SINGLE, isFree);
+                            rooms.add(room);
+                        }else if(roomType=="2"){
+                            IRoom room = new Room(roomNumber, price, RoomType.DOUBLE, isFree);
+                            rooms.add(room);
+                        }
+                    }
+                    adminResource.addRoom(rooms);
+                    System.out.println("Successfully added rooms!");
                 }else if(command=="5"){
                     running = false;
                 }

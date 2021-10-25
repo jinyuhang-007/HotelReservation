@@ -40,9 +40,11 @@ public class ReservationService {
         System.out.println("Reservation: We don't have room"+roomNumber+"!");
         return null;
     }
+
     public Collection<IRoom> getAllRooms(){
         return rooms;
     }
+
     public Reservation reserveARoom(Customer customer, IRoom room, Date checkInDate, Date checkOutDate){
         Collection<IRoom> roomSet = findRooms(checkInDate,checkOutDate);
         if(roomSet.contains(room)){

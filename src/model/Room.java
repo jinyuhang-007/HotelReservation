@@ -6,11 +6,11 @@ public class Room implements IRoom{
     private RoomType enumeration;
     private boolean free;
 
-    public Room(String roomNumber, Double price, RoomType enumeration, boolean free){
+    public Room(String roomNumber, Double price, RoomType enumeration, boolean isfree){
         this.roomNumber = roomNumber;
         this.price = price;
         this.enumeration = enumeration;
-        this.free = free;
+        this.free = isfree;
     }
 
     public Room(Room room){
