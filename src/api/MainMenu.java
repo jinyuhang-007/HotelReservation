@@ -25,8 +25,8 @@ public class MainMenu {
         while(running){
             try{
                 this.printMainMenu();
-                String command = scanner.next();
-                if(command=="1"){
+                int command = scanner.nextInt();
+                if(command==1){
                     System.out.println("please enter your email, checkInDate and checkOutDate:");
                     String customerEmail = scanner.next();
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -42,24 +42,24 @@ public class MainMenu {
                     IRoom room = hotelResource.getRoom(roomNumber);
                     hotelResource.bookARoom(customerEmail, room, checkInDate, checkOutDate);
                     System.out.println("Successfully booked a room!");
-                }else if(command=="2"){
+                }else if(command==2){
                     System.out.println("Please enter your email:");
                     String customerEmail = scanner.next();
                     Collection<Reservation> reservations = hotelResource.getCustomersReservations(customerEmail);
                     for(Reservation reservation: reservations){
                         System.out.println(reservation);
                     }
-                }else if(command=="3"){
+                }else if(command==3){
                     System.out.println("Please enter your email, firstName and lastName");
                     String customerEmail = scanner.next();
                     String firstName = scanner.next();
                     String lastName = scanner.next();
                     hotelResource.createACustomer(customerEmail, firstName, lastName);
                     System.out.println("Successfully created an account!");
-                }else if(command=="4"){
+                }else if(command==4){
                     AdminMenu adminMenu = new AdminMenu();
                     adminMenu.start();
-                }else if(command=="5"){
+                }else if(command==5){
                     System.out.println("Thanks for using JYH Hotel Reserving System!");
                     running = false;
                 }
