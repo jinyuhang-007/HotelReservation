@@ -1,8 +1,14 @@
 package model;
 
+import java.util.Scanner;
+
 public class Tester {
     public static void main(String[] args){
-        Customer customer = new Customer("first","second","1@email.com");
+        Scanner scanner = new Scanner(System.in);
+        String email = scanner.next();
+        String firstName = scanner.next();
+        String lastName = scanner.next();
+        Customer customer = new Customer(firstName,lastName,email);
         System.out.println(customer);
     }
 }

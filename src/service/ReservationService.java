@@ -33,11 +33,11 @@ public class ReservationService {
     * */
     public IRoom getARoom(String roomNumber){
         for(IRoom room: rooms){
-            if(room.getRoomNumber() == roomNumber){
+            if(room.getRoomNumber().equals(roomNumber)){
                 return room;
             }
         }
-        System.out.println("Reservation: We don't have room"+roomNumber+"!");
+        System.out.println("ReservationService: We don't have room "+roomNumber+"!");
         return null;
     }
 
@@ -84,8 +84,8 @@ public class ReservationService {
     }
 
     public void printAllReservation(){
-        for(Reservation reservation:reservations){
-            System.out.println(reservation.toString());
+        for(Reservation reservation: reservations){
+            System.out.println(reservation);
         }
     }
 }

@@ -40,8 +40,9 @@ public class MainMenu {
                     System.out.println("Enter the room number:");
                     String roomNumber = scanner.next();
                     IRoom room = hotelResource.getRoom(roomNumber);
-                    hotelResource.bookARoom(customerEmail, room, checkInDate, checkOutDate);
-                    System.out.println("Successfully booked a room!");
+                    if(hotelResource.bookARoom(customerEmail, room, checkInDate, checkOutDate)!=null){
+                        System.out.println("Successfully booked a room!");
+                    };
                 }else if(command==2){
                     System.out.println("Please enter your email:");
                     String customerEmail = scanner.next();
@@ -64,7 +65,7 @@ public class MainMenu {
                     running = false;
                 }
             }catch(Exception exception){
-                exception.getLocalizedMessage();
+                System.out.println(exception.getLocalizedMessage());
             }
         }
     }

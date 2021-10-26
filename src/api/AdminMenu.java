@@ -1,5 +1,6 @@
 package api;
 
+import model.Customer;
 import model.IRoom;
 import model.Room;
 import model.RoomType;
@@ -25,7 +26,10 @@ public class AdminMenu {
                 this.printAdminMenu();
                 int command = scanner.nextInt();
                 if(command==1){
-                    adminResource.getAllCustomers();
+                    Collection<Customer> customers = adminResource.getAllCustomers();
+                    for(Customer customer: customers){
+                        System.out.println(customer);
+                    }
                 }else if(command==2){
                     Collection<IRoom> rooms = adminResource.getAllRooms();
                     for(IRoom room: rooms){

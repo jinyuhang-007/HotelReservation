@@ -7,8 +7,8 @@ public class Customer {
     private String lastName;
     private String email;
 
-    public Customer(String firstName, String lastName, String email){
-        String emailRegex = "[A-z0-9_-]*\\@[A-z0-9]+\\.[A-z]+";
+    public Customer(String email, String firstName, String lastName){
+        String emailRegex = "^(.+)@(.+).(.+)$";
 
         Pattern pattern = Pattern.compile(emailRegex);
         if(pattern.matcher(email).matches()==false){
