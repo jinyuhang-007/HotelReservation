@@ -35,7 +35,7 @@ public class HotelResource {
     }
 
     public void createACustomer(String email,String firstName,String lastName){
-        System.out.println("In HotelResource CreateACustomer");
+        //System.out.println("In HotelResource CreateACustomer");
         customerService.addCustomer(email, firstName, lastName);
     }
 

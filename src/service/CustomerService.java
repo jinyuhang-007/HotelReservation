@@ -28,7 +28,7 @@ public class CustomerService {
 
     public Customer getCustomer(String customerEmail){
         for(Customer customer: customers){
-            if(customer.getEmail()==customerEmail){
+            if(customer.getEmail().equals(customerEmail)){
                 return customer;
             }
         }
