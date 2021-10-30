@@ -39,6 +39,7 @@ public class AdminMenu {
                     adminResource.displayAllReservations();
                 }else if(command==4){
                     System.out.println("Please enter roomNumber, price, roomType(1.SINGLE 2.DOUBLE) and isFree(true or false)");
+                    System.out.println("Example: 1 100 1 false");
                     String roomNumber = scanner.next();
                     Double price = scanner.nextDouble();
                     int roomType = scanner.nextInt();
