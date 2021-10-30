@@ -38,38 +38,28 @@ public class AdminMenu {
                 }else if(command==3){
                     adminResource.displayAllReservations();
                 }else if(command==4){
-                    Boolean addRoom = true;
-                    List<IRoom> rooms = new ArrayList<IRoom>();
-                    while(addRoom){
-                        System.out.println("Do you want to continue? (y/n)");
-                        String answer = scanner.next();
-                        if(answer.equals("n")){
-                            addRoom = false;
-                            continue;
-                        }
-                        System.out.println("Please enter roomNumber, price, roomType(1.SINGLE 2.DOUBLE) and isFree(true or false)");
-                        String roomNumber = scanner.next();
-                        Double price = scanner.nextDouble();
-                        int roomType = scanner.nextInt();
-                        Boolean isFree = scanner.nextBoolean();
-                        if(roomType==1){
-                            IRoom room = new Room(roomNumber, price, RoomType.SINGLE, isFree);
-                            rooms.add(room);
-                        }else if(roomType==2){
-                            IRoom room = new Room(roomNumber, price, RoomType.DOUBLE, isFree);
-                            rooms.add(room);
-                        }else{
-                            System.out.println("Unvalid room type!");
-                            continue;
-                        }
+                    System.out.println("Please enter roomNumber, price, roomType(1.SINGLE 2.DOUBLE) and isFree(true or false)");
+                    String roomNumber = scanner.next();
+                    Double price = scanner.nextDouble();
+                    int roomType = scanner.nextInt();
+                    Boolean isFree = scanner.nextBoolean();
+                    if(roomType==1){
+                        Room room = new Room(roomNumber, price, RoomType.SINGLE, isFree);
+                        adminResource.addRoom(room);
+                        System.out.println("Successfully finished!");
+                    }else if(roomType==2){
+                        Room room = new Room(roomNumber, price, RoomType.DOUBLE, isFree);
+                        adminResource.addRoom(room);
+                        System.out.println("Successfully finished!");
+                    }else{
+                        System.out.println("Invalid input!");
+                        continue;
                     }
-                    adminResource.addRoom(rooms);
-                    System.out.println("Successfully finished!");
                 }else if(command==5){
                     running = false;
                 }
             }catch(Exception exception){
-
+                System.out.println(exception.getLocalizedMessage());
             }
         }
     }
