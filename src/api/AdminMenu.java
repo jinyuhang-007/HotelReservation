@@ -43,7 +43,7 @@ public class AdminMenu {
                     String roomNumber = scanner.next();
                     Double price = scanner.nextDouble();
                     int roomType = scanner.nextInt();
-                    Boolean isFree = scanner.nextBoolean();
+                    boolean isFree = scanner.nextBoolean();
                     if(roomType==1){
                         Room room = new Room(roomNumber, price, RoomType.SINGLE, isFree);
                         adminResource.addRoom(room);
@@ -54,7 +54,6 @@ public class AdminMenu {
                         System.out.println("Successfully finished!");
                     }else{
                         System.out.println("Invalid input!");
-                        continue;
                     }
                 }else if(command==5){
                     running = false;

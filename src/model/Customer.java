@@ -12,7 +12,7 @@ public class Customer {
         String emailRegex = "^(.+)@(.+).(.+)$";
 
         Pattern pattern = Pattern.compile(emailRegex);
-        if(pattern.matcher(email).matches()==false){
+        if(!pattern.matcher(email).matches()){
             throw new IllegalArgumentException("It is an illegal email address!");
         }
         this.firstName = firstName;
