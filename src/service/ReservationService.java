@@ -64,13 +64,16 @@ public class ReservationService {
             for(Reservation reservation: reservations){
                 if((reservation.getCheckInDate().before(checkInDate) && reservation.getCheckOutDate().after(checkOutDate))||
                         (reservation.getCheckInDate().after(checkInDate) && reservation.getCheckInDate().before(checkOutDate))||
-                        (reservation.getCheckOutDate().after(checkInDate) && reservation.getCheckOutDate().before(checkOutDate))){
+                        (reservation.getCheckOutDate().after(checkInDate) && reservation.getCheckOutDate().before(checkOutDate))||
+                        (reservation.getCheckInDate().equals(checkInDate))||
+                        (reservation.getCheckOutDate().equals(checkOutDate))){
                     result.remove(reservation.getRoom());
                 }
             }
         }
         return result;
     }
+
 
     public Collection<Reservation> getCustomerReservation(Customer customer){
         Collection<Reservation> result = new HashSet<>();

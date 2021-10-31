@@ -4,6 +4,7 @@ import model.IRoom;
 import model.Reservation;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Scanner;
@@ -33,16 +34,34 @@ public class MainMenu {
                     Date checkInDate = simpleDateFormat.parse(scanner.next());
                     Date checkOutDate = simpleDateFormat.parse(scanner.next());
                     Collection<IRoom> rooms = hotelResource.findARoom(checkInDate, checkOutDate);
-                    System.out.println("which one do you prefer?");
-                    for(IRoom room: rooms){
-                        System.out.println(room);
+                    if(!rooms.isEmpty()){
+                        System.out.println("which one do you prefer?");
+                        for(IRoom room: rooms){
+                            System.out.println(room);
+                        }
+                        System.out.println("Enter the room number:");
+                        String roomNumber = scanner.next();
+                        IRoom room = hotelResource.getRoom(roomNumber);
+                        if(hotelResource.bookARoom(customerEmail, room, checkInDate, checkOutDate)!=null){
+                            System.out.println("Successfully booked a room!");
+                        };
+                    }else{
+                        System.out.println("Sorry, we don't have valid rooms now.");
+                        System.out.println("We recommend you consider these rooms(7 days after your previous checkInDate and CheckOutDate):");
+
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.setTime(checkInDate);
+                        calendar.add(Calendar.DATE,+7);
+                        Date date1 = calendar.getTime();
+                        calendar.setTime(checkOutDate);
+                        calendar.add(Calendar.DATE, +7);
+                        Date date2 = calendar.getTime();
+
+                        Collection<IRoom> recommendRooms = hotelResource.findARoom(date1, date2);
+                        for(IRoom room: recommendRooms){
+                            System.out.println(room);
+                        }
                     }
-                    System.out.println("Enter the room number:");
-                    String roomNumber = scanner.next();
-                    IRoom room = hotelResource.getRoom(roomNumber);
-                    if(hotelResource.bookARoom(customerEmail, room, checkInDate, checkOutDate)!=null){
-                        System.out.println("Successfully booked a room!");
-                    };
                 }else if(command==2){
                     System.out.println("Please enter your email:");
                     String customerEmail = scanner.next();
