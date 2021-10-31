@@ -84,7 +84,8 @@ public class MainMenu {
                     running = false;
                 }
             }catch(Exception exception){
-                System.out.println(exception.getLocalizedMessage());
+                System.out.println("Invalid input");
+                scanner.next();
             }
         }
     }
